@@ -29,6 +29,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     http
       .headers().frameOptions().sameOrigin()
     .and()
+      .csrf().disable()
       .authorizeRequests()
         .anyRequest().authenticated()
       .and()
