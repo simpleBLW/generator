@@ -32,6 +32,7 @@ public class PDFService {
 
   public String writePDF(String html, String lang, String name, String title) {
     try {
+      logger.info("Generating: " + outputDir + name + ".pdf");
       FileOutputStream outputStream = new FileOutputStream(outputDir + name + ".pdf");
 
       PdfWriter pdfWriter = new PdfWriter(outputStream);
@@ -55,6 +56,7 @@ public class PDFService {
       HtmlConverter.convertToPdf(html, pdfDoc, props);
 
       pdfDoc.close();
+      logger.info("Generated: " + outputDir + name + ".pdf");
     } catch (IOException ex) {
       logger.error("Error write pdf : " + outputDir + name + ".pdf", ex);
       return ex.getMessage();
